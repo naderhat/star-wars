@@ -1,13 +1,14 @@
 <div>
   <ul class="nav nav-tabs">
     <li role="presentation">
-      <a href="#">All</a>
+      <a (click)="onChoose('all')" style="cursor: pointer">All</a>
     </li>
     <li role="presentation">
-      <a href="#">Light</a>
+      <a (click)="onChoose('light')" style="cursor: pointer">Light</a>
     </li>
     <li role="presentation">
-      <a href="#">Dark</a>
+      <a (click)="onChoose('dark')" style="cursor: pointer">Dark</a>
     </li>
   </ul>
 </div>
+<app-list [characters]="getCharacters()"></app-list>
