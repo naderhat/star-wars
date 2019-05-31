@@ -47,5 +47,6 @@ export class StarWarsService {
 
     const newChar = { name: name, side: side };
     this.characters.push(newChar);
+    console.log(this.characters);
   }
 }

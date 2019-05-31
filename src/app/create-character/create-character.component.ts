@@ -9,10 +9,11 @@ import { StarWarsService } from 'src/app/star-wars.service';
 export class CreateCharacterComponent implements OnInit {
   availableSides = [
     { display: 'None', value: '' },
-    { display: 'Light', value: 'ligth' },
+    { display: 'Light', value: 'light' },
     { display: 'Dark', value: 'dark' }
   ];
   swService: StarWarsService;
+  defaultName = 'Obi-Wan';
 
   constructor(swService: StarWarsService) {
     this.swService = swService;
@@ -24,7 +25,7 @@ export class CreateCharacterComponent implements OnInit {
     if (submittedForm.invalid) {
       return;
     }
-    console.log(submittedForm);
+    console.log(submittedForm.value);
     this.swService.addCharacter(
       submittedForm.value.name,
       submittedForm.value.side
