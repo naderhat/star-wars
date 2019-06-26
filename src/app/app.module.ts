@@ -11,6 +11,7 @@ import { StarWarsService } from 'src/app/star-wars.service';
 import { LogService } from 'src/app/log.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpModule } from '@angular/http';
 
 const routes = [
   {
@@ -34,7 +35,12 @@ const routes = [
     CreateCharacterComponent,
     HeaderComponent
   ],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpModule
+  ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
 })
