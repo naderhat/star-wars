@@ -32,7 +32,7 @@ export class StarWarsService {
 
   fetchCharacters() {
     this.http
-      .get('https://swapi.co/api/people')
+      .get('https://cors-anywhere.herokuapp.com/https://swapi.co/api/people')
       .map((response: Response | any) => {
         const data = response.json();
         const extractedChars = data.results;
