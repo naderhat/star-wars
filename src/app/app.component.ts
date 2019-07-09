@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StarWarsService } from 'src/app/star-wars.service';
 
 @Component({
   selector: 'app-root',
