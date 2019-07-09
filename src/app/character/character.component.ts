@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  name: string;
+  height: number;
+  mass: number;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  homeworld: string;
+  films: string[];
+  species: string[];
+  vehicles: string[];
+  starships: string[];
+  url: string;
+  created: Date;
+  edited: Date;
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

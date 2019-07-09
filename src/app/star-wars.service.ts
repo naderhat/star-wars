@@ -37,7 +37,7 @@ export class StarWarsService {
         const data = response.json();
         const extractedChars = data.results;
         const chars = extractedChars.map(char => {
-          return { name: char.name, side: '' };
+          return { name: char.name, side: '', url: char.url };
         });
         return chars;
       })
@@ -45,6 +45,34 @@ export class StarWarsService {
         console.log(data);
         this.characters = data;
         this.charactersChanged.next();
+      });
+  }
+
+  fetchCharacterDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const character = response.json();
+        const chars = character.map(char => {
+          return {
+            name: char.name,
+            height: char.height,
+            mass: char.mass,
+            hair_color: char.hair_color,
+            skin_color: char.skin_color,
+            eye_color: char.eye_color,
+            birth_year: char.birth_year,
+            gender: char.gender,
+            homeworld: char.homeworld,
+            films: char.films,
+            species: char.species,
+            vehicles: char.vehicles,
+            starships: char.starships,
+            created: char.created,
+            edited: char.edited,
+            url: char.url
+          };
+        });
       });
   }
 
