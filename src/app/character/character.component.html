@@ -1,5 +1,8 @@
 <div>
   <div>
+    <h4>Character</h4>
+  </div>
+  <div>
     <span class="label">Name:</span>
     <span>{{name}}</span>
   </div>
@@ -34,7 +37,31 @@
   <div>
     <span class="label">Home World:</span>
     <span>
-      <app-link-to-item [routerPath]="'/planet'" [urlPath]="homeworld" [name]="'Home'"></app-link-to-item>
+      <app-link-to-item [routerPath]="'/planet'" [urlPath]="homeworld" [name]="'Home World'"></app-link-to-item>
     </span>
+  </div>
+  <div>
+    <span class="label">Films</span>
+    <div *ngFor="let film of films">
+      <app-link-to-item [routerPath]="'/film'" [urlPath]="resident" [name]="'Film'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Species</span>
+    <div *ngFor="let spcies of speciess">
+      <app-link-to-item [routerPath]="'/species'" [urlPath]="species" [name]="'Species'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Vehicles</span>
+    <div *ngFor="let vehicle of vehicles">
+      <app-link-to-item [routerPath]="'/vehicle'" [urlPath]="vehicle" [name]="'Vehicle'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Starships</span>
+    <div *ngFor="let starship of starships">
+      <app-link-to-item [routerPath]="'/starship'" [urlPath]="starship" [name]="'Starship'"></app-link-to-item>
+    </div>
   </div>
 </div>
