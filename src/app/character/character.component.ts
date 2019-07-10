@@ -18,22 +18,23 @@ export class CharacterComponent implements OnInit {
     private swService: StarWarsService
   ) {}
 
-  name: string;
-  height: number;
-  mass: number;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
   birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  url: string;
   created: Date;
   edited: Date;
+  eye_color: string;
+  gender: string;
+  hair_color: string;
+  height: number;
+  homeworld: string;
+  mass: number;
+  name: string;
+  skin_color: string;
+  url: string;
+
+  films: string[];
+  speciess: string[];
+  starships: string[];
+  vehicles: string[];
 
   ngOnInit() {
     this.route.params.subscribe(params => (this.characterUrl = params.url));
@@ -54,6 +55,9 @@ export class CharacterComponent implements OnInit {
       this.mass = this.character.mass;
       this.name = this.character.name;
       this.skin_color = this.character.skin_color;
+      this.speciess = this.character.species;
+      this.vehicles = this.character.vehicles;
+      this.starships = this.character.starships;
     });
     console.log(this.characterUrl);
   }
