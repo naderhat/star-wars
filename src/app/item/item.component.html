@@ -1,6 +1,5 @@
 <a style="cursor: pointer" class="list-group-item">
   <h4 class="list-group-item-heading" routerLinkActive="active">
-    <a routerLink="/character">{{ character.name }}</a>
     <a [routerLink]="['/character', character.url]">{{ character.name }}</a>
   </h4>
   <div>
