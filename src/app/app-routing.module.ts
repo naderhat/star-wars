@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { CharacterComponent } from './character/character.component';
+import { PlanetComponent } from './planet/planet.component';
 
 const routes = [
   {
@@ -21,6 +22,7 @@ const routes = [
   },
   { path: 'character', component: CharacterComponent },
   { path: 'character/:url', component: CharacterComponent },
+  { path: 'planet/:url', component: PlanetComponent },
   { path: '**', redirectTo: '/characters' }
 ];
 

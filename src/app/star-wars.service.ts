@@ -12,10 +12,12 @@ export class StarWarsService {
   ];
 
   character;
+  planet;
 
   private logService: LogService;
   charactersChanged = new Subject<void>();
   characterFetched = new Subject<void>();
+  planetFetched = new Subject<void>();
   http: Http;
 
   constructor(logService: LogService, http: Http) {
@@ -79,6 +81,35 @@ export class StarWarsService {
         console.log(data);
         this.character = data;
         this.characterFetched.next();
+      });
+  }
+
+  fetchPlanetDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const planet = response.json();
+        return {
+          name: planet.name,
+          rotation_period: planet.rotation_period,
+          orbital_period: planet.orbital_period,
+          diameter: planet.diameter,
+          climate: planet.diameter,
+          gravity: planet.gravity,
+          terrain: planet.terrain,
+          surface_water: planet.surface_water,
+          population: planet.population,
+          residents: planet.residents,
+          films: planet.films,
+          created: planet.created,
+          edited: planet.edited,
+          url: planet.url
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.planet = data;
+        this.planetFetched.next();
       });
   }
 

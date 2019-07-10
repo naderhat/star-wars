@@ -12,7 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CharacterComponent } from './character/character.component';
-import { PlanetComponent } from './planet-component/planet.component';
+import { PlanetComponent } from './planet/planet.component';
 
 @NgModule({
   declarations: [
