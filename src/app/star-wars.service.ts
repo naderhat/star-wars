@@ -25,16 +25,6 @@ export class StarWarsService {
     this.http = http;
   }
 
-  /*
-  fetchCharacters() {
-    this.http
-      .get('https://swapi.co/api/people')
-      .subscribe((response: Response | any) => {
-        console.log(response);
-      });
-  }
-  */
-
   fetchCharacters() {
     this.http
       .get('https://cors-anywhere.herokuapp.com/https://swapi.co/api/people')
@@ -125,6 +115,10 @@ export class StarWarsService {
 
   getCharacter() {
     return this.character;
+  }
+
+  getPlanet() {
+    return this.planet;
   }
 
   onSideChosen(charInfo) {
