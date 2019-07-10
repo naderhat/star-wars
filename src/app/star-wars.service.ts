@@ -11,8 +11,11 @@ export class StarWarsService {
     { name: 'Darth Vader', side: '' }
   ];
 
+  character;
+
   private logService: LogService;
   charactersChanged = new Subject<void>();
+  characterFetched = new Subject<void>();
   http: Http;
 
   constructor(logService: LogService, http: Http) {
@@ -37,7 +40,7 @@ export class StarWarsService {
         const data = response.json();
         const extractedChars = data.results;
         const chars = extractedChars.map(char => {
-          return { name: char.name, side: '' };
+          return { name: char.name, side: '', url: char.url };
         });
         return chars;
       })
@@ -45,6 +48,37 @@ export class StarWarsService {
         console.log(data);
         this.characters = data;
         this.charactersChanged.next();
+      });
+  }
+
+  fetchCharacterDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const char = response.json();
+        return {
+          name: char.name,
+          height: char.height,
+          mass: char.mass,
+          hair_color: char.hair_color,
+          skin_color: char.skin_color,
+          eye_color: char.eye_color,
+          birth_year: char.birth_year,
+          gender: char.gender,
+          homeworld: char.homeworld,
+          films: char.films,
+          species: char.species,
+          vehicles: char.vehicles,
+          starships: char.starships,
+          created: char.created,
+          edited: char.edited,
+          url: char.url
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.character = data;
+        this.characterFetched.next();
       });
   }
 
@@ -56,6 +90,10 @@ export class StarWarsService {
     return this.characters.filter(char => {
       return char.side === chosenList;
     });
+  }
+
+  getCharacter() {
+    return this.character;
   }
 
   onSideChosen(charInfo) {

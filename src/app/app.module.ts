@@ -11,6 +11,7 @@ import { LogService } from 'src/app/log.service';
 import { HeaderComponent } from './header/header.component';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     TabsComponent,
     ListComponent,
     ItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    CharacterComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
