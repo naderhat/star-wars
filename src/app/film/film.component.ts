@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./film.component.css']
 })
 export class FilmComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  created: Date;
+  director: string;
+  edited: Date;
+  episodeId: number;
+  openingCrawl: string;
+  title: string;
+  url: string;
 
-  ngOnInit() {
-  }
+  prodoucer: string;
+  releaseDate: string;
 
+  characters: string[];
+  planets: string[];
+  startships: string[];
+  vehicles: string[];
+  species: string[];
+
+  ngOnInit() {}
 }

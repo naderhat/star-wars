@@ -1,3 +1,44 @@
-<p>
-  film works!
-</p>
+<div>
+  <div>
+    <span class="label">Title:</span>
+    <span></span>
+  </div>
+  <div>
+    <span class="label">Episode Id:</span>
+    <span></span>
+  </div>
+  <div>
+    <span class="label">Opening Crawl</span>
+    <textarea></textarea>
+  </div>
+  <div>
+    <span class="label">Director</span>
+    <span></span>
+  </div>
+  <div>
+    <span class="label">Producer</span>
+    <span></span>
+  </div>
+  <div>
+    <span class="label">Release Date</span>
+    <span></span>
+  </div>
+  <div>
+    <span class="label">Characters</span>
+    <div *ngFor="let character of characters">
+      <app-link-to-item [routerPath]="'/character'" [urlPath]="character" [name]="'Character'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Planets</span>
+    <div *ngFor="let planet of planets">
+      <app-link-to-item [routerPath]="'/planet'" [urlPath]="planet" [name]="'Planet'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Starships</span>
+    <div *ngFor="let starship of starships">
+      <app-link-to-item [routerPath]="'/starship'" [urlPath]="planet" [name]="'Starship'"></app-link-to-item>
+    </div>
+  </div>
+</div>

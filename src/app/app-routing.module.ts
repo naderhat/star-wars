@@ -5,6 +5,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
 import { CharacterComponent } from './character/character.component';
 import { PlanetComponent } from './planet/planet.component';
+import { FilmComponent } from 'src/app/film/film.component';
 
 const routes = [
   {
@@ -23,6 +24,7 @@ const routes = [
   { path: 'character', component: CharacterComponent },
   { path: 'character/:url', component: CharacterComponent },
   { path: 'planet/:url', component: PlanetComponent },
+  { path: 'film/:url', component: FilmComponent },
   { path: '**', redirectTo: '/characters' }
 ];
 
