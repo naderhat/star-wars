@@ -12,7 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CharacterComponent } from './character/character.component';
-import { PlanetComponentComponent } from './planet-component/planet-component.component';
+import { PlanetComponent } from './planet-component/planet.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { PlanetComponentComponent } from './planet-component/planet-component.co
     ItemComponent,
     HeaderComponent,
     CharacterComponent,
-    PlanetComponentComponent
+    PlanetComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
