@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 
 import { TabsComponent } from './tabs/tabs.component';
 import { ListComponent } from './list/list.component';
+import { CharacterComponent } from './character/character.component';
 
 const routes = [
   {
@@ -18,6 +19,8 @@ const routes = [
     loadChildren:
       'src/app/create-character/create-character.module#CreateCharacterModule'
   },
+  { path: 'character', component: CharacterComponent },
+  { path: 'character/:url', component: CharacterComponent },
   { path: '**', redirectTo: '/characters' }
 ];
 

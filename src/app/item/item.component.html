@@ -1,6 +1,7 @@
 <a style="cursor: pointer" class="list-group-item">
-  <h4 class="list-group-item-heading">
-    <a href={{character.url}}>{{ character.name }}</a>
+  <h4 class="list-group-item-heading" routerLinkActive="active">
+    <a routerLink="/character">{{ character.name }}</a>
+    <a [routerLink]="['/character', character.url]">{{ character.name }}</a>
   </h4>
   <div>
     <button class="btn btn-primary" (click)="onAssign('light')">Light</button>
