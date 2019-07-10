@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StarWarsService } from 'src/app/star-wars.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -9,13 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
-  @Input()
-  queryParams: {
-    [url: string]: any;
-  };
-
   characterUrl: string;
-  sub;
   subscription: Subscription;
   character;
 
@@ -42,9 +36,7 @@ export class CharacterComponent implements OnInit {
   edited: Date;
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(
-      params => (this.characterUrl = params.url)
-    );
+    this.route.params.subscribe(params => (this.characterUrl = params.url));
 
     this.swService.fetchCharacterDetails(this.characterUrl);
 

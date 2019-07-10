@@ -12,26 +12,18 @@ export class StarWarsService {
   ];
 
   character;
+  planet;
 
   private logService: LogService;
   charactersChanged = new Subject<void>();
   characterFetched = new Subject<void>();
+  planetFetched = new Subject<void>();
   http: Http;
 
   constructor(logService: LogService, http: Http) {
     this.logService = logService;
     this.http = http;
   }
-
-  /*
-  fetchCharacters() {
-    this.http
-      .get('https://swapi.co/api/people')
-      .subscribe((response: Response | any) => {
-        console.log(response);
-      });
-  }
-  */
 
   fetchCharacters() {
     this.http
@@ -82,6 +74,35 @@ export class StarWarsService {
       });
   }
 
+  fetchPlanetDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const planet = response.json();
+        return {
+          name: planet.name,
+          rotation_period: planet.rotation_period,
+          orbital_period: planet.orbital_period,
+          diameter: planet.diameter,
+          climate: planet.diameter,
+          gravity: planet.gravity,
+          terrain: planet.terrain,
+          surface_water: planet.surface_water,
+          population: planet.population,
+          residents: planet.residents,
+          films: planet.films,
+          created: planet.created,
+          edited: planet.edited,
+          url: planet.url
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.planet = data;
+        this.planetFetched.next();
+      });
+  }
+
   getCharacters(chosenList) {
     if (chosenList === 'all') {
       return this.characters.slice();
@@ -94,6 +115,10 @@ export class StarWarsService {
 
   getCharacter() {
     return this.character;
+  }
+
+  getPlanet() {
+    return this.planet;
   }
 
   onSideChosen(charInfo) {
