@@ -13,6 +13,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { CharacterComponent } from './character/character.component';
 import { PlanetComponent } from './planet/planet.component';
+import { LinkToItemComponent } from './link-to-item/link-to-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlanetComponent } from './planet/planet.component';
     ItemComponent,
     HeaderComponent,
     CharacterComponent,
-    PlanetComponent
+    PlanetComponent,
+    LinkToItemComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
