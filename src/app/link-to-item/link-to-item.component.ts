@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-link-to-item',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./link-to-item.component.css']
 })
 export class LinkToItemComponent implements OnInit {
+  @Input()
+  name: string;
 
-  constructor() { }
+  @Input()
+  urlPath: string;
 
-  ngOnInit() {
-  }
+  @Input()
+  routerPath: string;
 
+  constructor() {}
+
+  ngOnInit() {}
 }
