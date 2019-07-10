@@ -33,6 +33,14 @@
   </div>
   <div>
     <span class="label">Residents:</span>
-    <span></span>
+    <div *ngFor="let resident of residents">
+      <app-link-to-item [routerPath]="'/character'" [urlPath]="resident" [name]="'Person'"></app-link-to-item>
+    </div>
+  </div>
+  <div>
+    <span class="label">Films</span>
+    <div *ngFor="let film of films">
+      <app-link-to-item [routerPath]="'/film'" [urlPath]="resident" [name]="'Film'"></app-link-to-item>
+    </div>
   </div>
 </div>
