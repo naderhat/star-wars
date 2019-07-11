@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { StarWarsService } from 'src/app/star-wars.service';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-film',
@@ -6,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./film.component.css']
 })
 export class FilmComponent implements OnInit {
-  constructor() {}
+  filmUrl: string;
+  subscription: Subscription;
+  film;
+
+  constructor(
+    private route: ActivatedRoute,
+    private swService: StarWarsService
+  ) {}
 
   created: Date;
   director: string;
@@ -15,8 +25,7 @@ export class FilmComponent implements OnInit {
   openingCrawl: string;
   title: string;
   url: string;
-
-  prodoucer: string;
+  producer: string;
   releaseDate: string;
 
   characters: string[];
@@ -25,5 +34,28 @@ export class FilmComponent implements OnInit {
   vehicles: string[];
   species: string[];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => (this.filmUrl = params.url));
+
+    this.swService.fetchFilmDetails(this.filmUrl);
+
+    this.subscription = this.swService.filmFetched.subscribe(() => {
+      this.film = this.swService.getFilm();
+
+      this.created = this.film.created;
+      this.director = this.film.director;
+      this.edited = this.film.edited;
+      this.episodeId = this.film.episodeId;
+      this.openingCrawl = this.film.openingCrawl.replace(/\n/g, ' ');
+      this.title = this.film.title;
+      this.url = this.film.url;
+      this.producer = this.film.producer;
+      this.releaseDate = this.film.releaseDate;
+      this.characters = this.film.characters;
+      this.planets = this.film.planets;
+      this.startships = this.film.startships;
+      this.vehicles = this.film.vehicles;
+      this.species = this.film.species;
+    });
+  }
 }
