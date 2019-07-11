@@ -13,11 +13,13 @@ export class StarWarsService {
 
   character;
   planet;
+  film;
 
   private logService: LogService;
   charactersChanged = new Subject<void>();
   characterFetched = new Subject<void>();
   planetFetched = new Subject<void>();
+  filmFetched = new Subject<void>();
   http: Http;
 
   constructor(logService: LogService, http: Http) {
@@ -103,6 +105,35 @@ export class StarWarsService {
       });
   }
 
+  fetchFilmDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const film = response.json();
+        return {
+          title: film.title,
+          opisodeId: film.episode_id,
+          openingCrawl: film.opening_crawl,
+          director: film.director,
+          producer: film.producer,
+          releaseDate: film.release_date,
+          characters: film.characters,
+          planets: film.palents,
+          starships: film.starships,
+          vehicles: film.vehicles,
+          species: film.species,
+          created: film.created,
+          edited: film.edited,
+          url: film.url
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.film = data;
+        this.filmFetched.next();
+      });
+  }
+
   getCharacters(chosenList) {
     if (chosenList === 'all') {
       return this.characters.slice();
@@ -119,6 +150,10 @@ export class StarWarsService {
 
   getPlanet() {
     return this.planet;
+  }
+
+  getFilm() {
+    return this.film;
   }
 
   onSideChosen(charInfo) {

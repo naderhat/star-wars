@@ -59,6 +59,5 @@ export class CharacterComponent implements OnInit {
       this.vehicles = this.character.vehicles;
       this.starships = this.character.starships;
     });
-    console.log(this.characterUrl);
   }
 }
