@@ -13,6 +13,7 @@ export class StarWarsService {
 
   character;
   starship;
+  vehicle;
   planet;
   film;
 
@@ -20,6 +21,7 @@ export class StarWarsService {
   charactersChanged = new Subject<void>();
   characterFetched = new Subject<void>();
   starshipFeteched = new Subject<void>();
+  vehicleFetched = new Subject<void>();
   planetFetched = new Subject<void>();
   filmFetched = new Subject<void>();
   http: Http;
@@ -169,6 +171,37 @@ export class StarWarsService {
       });
   }
 
+  fetchVehicleDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const vehicle = response.json();
+        return {
+          name: vehicle.name,
+          model: vehicle.model,
+          manufacturer: vehicle.manufacturer,
+          costInCredits: vehicle.cost_in_credits,
+          length: vehicle.length,
+          maxAtmosphering: vehicle.max_atmosphering_speed,
+          crew: vehicle.crew,
+          passengers: vehicle.passengers,
+          cargoCapacity: vehicle.cargoCapacity,
+          consumbles: vehicle.consumles,
+          vehicleClass: vehicle.vehicle_class,
+          pilots: vehicle.polits,
+          films: vehicle.films,
+          created: vehicle.created,
+          edited: vehicle.edited,
+          url: vehicle.edited
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.vehicle = data;
+        this.vehicleFetched.next();
+      });
+  }
+
   getCharacters(chosenList) {
     if (chosenList === 'all') {
       return this.characters.slice();
@@ -193,6 +226,10 @@ export class StarWarsService {
 
   getStarship() {
     return this.starship;
+  }
+
+  getVehicle() {
+    return this.vehicle;
   }
 
   onSideChosen(charInfo) {
