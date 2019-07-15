@@ -16,6 +16,7 @@ import { PlanetComponent } from './planet/planet.component';
 import { LinkToItemComponent } from './link-to-item/link-to-item.component';
 import { FilmComponent } from './film/film.component';
 import { StarshipComponent } from './starship/starship.component';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StarshipComponent } from './starship/starship.component';
     PlanetComponent,
     LinkToItemComponent,
     FilmComponent,
-    StarshipComponent
+    StarshipComponent,
+    VehicleComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
