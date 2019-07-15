@@ -30,7 +30,7 @@ export class FilmComponent implements OnInit {
 
   characters: string[];
   planets: string[];
-  startships: string[];
+  starships: string[];
   vehicles: string[];
   species: string[];
 
@@ -53,7 +53,7 @@ export class FilmComponent implements OnInit {
       this.releaseDate = this.film.releaseDate;
       this.characters = this.film.characters;
       this.planets = this.film.planets;
-      this.startships = this.film.startships;
+      this.starships = this.film.starships;
       this.vehicles = this.film.vehicles;
       this.species = this.film.species;
     });
