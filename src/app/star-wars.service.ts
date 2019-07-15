@@ -12,12 +12,14 @@ export class StarWarsService {
   ];
 
   character;
+  starship;
   planet;
   film;
 
   private logService: LogService;
   charactersChanged = new Subject<void>();
   characterFetched = new Subject<void>();
+  starshipFeteched = new Subject<void>();
   planetFetched = new Subject<void>();
   filmFetched = new Subject<void>();
   http: Http;
@@ -134,6 +136,39 @@ export class StarWarsService {
       });
   }
 
+  fetchStarshipDetails(url: string) {
+    this.http
+      .get('https://cors-anywhere.herokuapp.com/' + url)
+      .map((response: Response | any) => {
+        const starship = response.json();
+        return {
+          name: starship.name,
+          model: starship.model,
+          manufacturer: starship.manufacturer,
+          costInCredits: starship.cost_in_credits,
+          length: starship.length,
+          maxAtmospheringSpeed: starship.max_atmosphering_speed,
+          crew: starship.crew,
+          passengers: starship.passengers,
+          cargoCapacity: starship.cargo_capacity,
+          consumables: starship.consumables,
+          hyperdriveRating: starship.hyperdrive_rating,
+          mglt: starship.MGLT,
+          starshipClass: starship.starship_class,
+          pilots: starship.pilots,
+          films: starship.films,
+          created: starship.created,
+          edited: starship.edited,
+          url: starship.url
+        };
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.starship = data;
+        this.starshipFeteched.next();
+      });
+  }
+
   getCharacters(chosenList) {
     if (chosenList === 'all') {
       return this.characters.slice();
@@ -154,6 +189,10 @@ export class StarWarsService {
 
   getFilm() {
     return this.film;
+  }
+
+  getStarship() {
+    return this.starship;
   }
 
   onSideChosen(charInfo) {

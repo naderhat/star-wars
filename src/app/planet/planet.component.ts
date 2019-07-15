@@ -40,6 +40,7 @@ export class PlanetComponent implements OnInit {
 
     this.subscription = this.swService.planetFetched.subscribe(() => {
       this.planet = this.swService.getPlanet();
+
       this.name = this.planet.name;
       this.rotation_period = this.planet.rotation_period;
       this.orbital_period = this.planet.orbital_period;
