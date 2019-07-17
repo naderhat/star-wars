@@ -18,6 +18,7 @@ import { FilmComponent } from './film/film.component';
 import { StarshipComponent } from './starship/starship.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { CharacterListComponent } from './character-list/character-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
     FilmComponent,
     StarshipComponent,
     VehicleComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CharacterListComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
