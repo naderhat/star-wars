@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Page } from 'src/app/pagination';
 
 @Component({
   selector: 'app-paginator',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnInit {
+  @Input()
+  page: Page<any>;
 
-  constructor() { }
+  @Output()
+  pageChange = new EventEmitter<string>();
 
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }
