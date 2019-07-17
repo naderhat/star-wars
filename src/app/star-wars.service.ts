@@ -2,7 +2,10 @@ import { LogService } from 'src/app/log.service';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Http } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/internal/Observable';
+import { Page } from 'src/app/pagination-page';
 
 @Injectable()
 export class StarWarsService {
@@ -257,5 +260,31 @@ export class StarWarsService {
     const newChar = { name: name, side: side };
     this.characters.push(newChar);
     console.log(this.characters);
+  }
+
+  queryPaginated<T>(
+    http: HttpClient,
+    baseUrl: string,
+    urlOrFilter?: string | object
+  ): Observable<Page<T>> {
+    let params = new HttpParams();
+    let url = baseUrl;
+
+    if (typeof urlOrFilter === 'string') {
+      url = urlOrFilter;
+    } else if (typeof urlOrFilter === 'object') {
+      Object.keys(urlOrFilter)
+        .sort()
+        .forEach(key => {
+          const value = urlOrFilter[key];
+          if (value !== null) {
+            params = params.set(key, value.toString());
+          }
+        });
+    }
+
+    return http.get<Page<T>>(url, {
+      params: params
+    });
   }
 }

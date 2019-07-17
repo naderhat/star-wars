@@ -17,6 +17,7 @@ import { LinkToItemComponent } from './link-to-item/link-to-item.component';
 import { FilmComponent } from './film/film.component';
 import { StarshipComponent } from './starship/starship.component';
 import { VehicleComponent } from './vehicle/vehicle.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { VehicleComponent } from './vehicle/vehicle.component';
     LinkToItemComponent,
     FilmComponent,
     StarshipComponent,
-    VehicleComponent
+    VehicleComponent,
+    PaginatorComponent
   ],
   imports: [BrowserModule, HttpModule, AppRoutingModule],
   providers: [StarWarsService, LogService],
