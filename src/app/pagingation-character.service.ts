@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { Page } from 'src/app/pagination-page';
+import { Page } from 'src/app/pagination';
 import { CharacterComponent } from 'src/app/character/character.component';
 import { StarWarsService } from 'src/app/star-wars.service';
 
