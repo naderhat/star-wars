@@ -26,6 +26,7 @@ export class CharacterListComponent {
   characterService: CharacterService;
 
   constructor(characterService: CharacterService) {
+    this.characterService = characterService;
     this.filterForm = new FormGroup({
       is_available: new FormControl(),
       search: new FormControl()

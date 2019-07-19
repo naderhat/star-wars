@@ -3,9 +3,11 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Page } from 'src/app/pagination';
 import { CharacterComponent } from 'src/app/character/character.component';
 import { StarWarsService } from 'src/app/star-wars.service';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 export class CharacterService {
-  baseUrl = '';
+  baseUrl = 'https://swapi.co/api/people';
   swService: StarWarsService;
 
   constructor(private http: HttpClient, swService: StarWarsService) {
