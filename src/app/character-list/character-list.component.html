@@ -1,0 +1,19 @@
+<div>
+  <h1>Character List</h1>
+  <div class="container" [formGroup]="filterForm">
+    <div class="search-bar">
+      <input formControlName="search" placeholder="Search by character name">
+      <select formControlName="is_available">
+        <option [value]="null">Is available?</option>
+        <option [value]="true">Yes</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+
+    <div *ngFor="let character of (page | async)?.results" [ngClass]="{'available': character.is_available, 'character': true}">
+      <app-link-to-item [routerPath]="'/character'" [urlPath]="character.url" [name]="character.name"></app-link-to-item>
+    </div>
+
+    <app-paginator [page]="page | async" (pageChange)="onPageChanged($event)"></app-paginator>
+  </div>
+</div>
